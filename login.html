@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}
+Login · PARTH
+{% endblock %}
+
+
+{% block content %}
+
+<section class="auth">
+
+    <div class="auth-card">
+
+        <div class="biglogo">
+            ⌖
+        </div>
+
+        <h1>PARTH</h1>
+
+        <p class="tagline">
+            Let me help you find your way.
+        </p>
+
+
+        <h2>
+            Welcome back
+        </h2>
+
+
+        {% if error %}
+
+        <div class="error">
+            {{ error }}
+        </div>
+
+        {% endif %}
+
+
+        <form method="POST"
+              action="/login">
+
+            <label>
+                Mobile Number
+            </label>
+
+            <input
+                name="mobile"
+                type="tel"
+                placeholder="Enter mobile number"
+                required
+            >
+
+
+            <label>
+                Password
+            </label>
+
+            <input
+                name="password"
+                type="password"
+                placeholder="Enter password"
+                required
+            >
+
+
+            <a href="#"
+               class="forgot">
+                Forgot password?
+            </a>
+
+
+            <button type="submit">
+                LOGIN →
+            </button>
+
+        </form>
+
+
+        <div class="or">
+            OR
+        </div>
+
+
+        <button
+            class="secondary"
+            type="button"
+            disabled>
+
+            Continue with DigiLocker
+
+        </button>
+
+
+        <p>
+
+            Don't have an account?
+
+            <a href="/signup">
+                Create Account
+            </a>
+
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

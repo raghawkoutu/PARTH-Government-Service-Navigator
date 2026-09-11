@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}PARTH{% endblock %}
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<nav class="nav">
+
+    <a href="{{ url_for('dashboard') }}"
+       class="brand">
+
+        <span class="logo">⌖</span>
+
+        <span>
+
+            <b>PARTH</b>
+
+            <small>
+                Government Service Navigator
+            </small>
+
+        </span>
+
+    </a>
+
+
+    {% if session.get("user_id") %}
+
+    <div class="links">
+
+        <a href="{{ url_for('dashboard') }}">
+            Home
+        </a>
+
+        <a href="{{ url_for('services') }}">
+            Services
+        </a>
+
+        <a href="{{ url_for('applications') }}">
+            My Applications
+        </a>
+
+        <a href="{{ url_for('contact') }}">
+            Contact Us
+        </a>
+
+        <a href="{{ url_for('logout') }}"
+           class="logout">
+            Logout
+        </a>
+
+    </div>
+
+    {% endif %}
+
+</nav>
+
+
+<main>
+
+    {% block content %}
+
+    {% endblock %}
+
+</main>
+
+
+<footer>
+
+    © 2026 PARTH · Government Service Navigator
+
+    ·
+
+    <a href="mailto:mangaldaku2006@gmail.com">
+        mangaldaku2006@gmail.com
+    </a>
+
+</footer>
+
+</body>
+
+</html>

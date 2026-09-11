@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block title %}
+PARTH · Home
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero">
+
+    <p class="eyebrow">
+        GOVERNMENT SERVICE NAVIGATOR
+    </p>
+
+    <h1>
+        Hi, {{ name }} 👋
+    </h1>
+
+    <h2>
+        Let me help you find your way.
+    </h2>
+
+    <p>
+        Tell PARTH what you need.
+        I'll help you discover the right
+        government service and the next steps.
+    </p>
+
+</section>
+
+
+<section class="chat-layout">
+
+
+    <div class="chat-card">
+
+
+        <div class="chat-head">
+
+            <span class="status"></span>
+
+            <div>
+
+                <b>
+                    PARTH
+                </b>
+
+                <small>
+                    Service Assistant
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="messages"
+            class="messages">
+
+            <div class="bubble bot">
+
+                Hi! 👋
+
+                <br><br>
+
+                What government service
+                are you looking for?
+
+            </div>
+
+        </div>
+
+
+        <div class="quick">
+
+            <button onclick="ask('I need a scholarship')">
+                🎓 Scholarship
+            </button>
+
+            <button onclick="ask('I need a caste certificate')">
+                📄 Caste Certificate
+            </button>
+
+            <button onclick="ask('I need an income certificate')">
+                💰 Income Certificate
+            </button>
+
+            <button onclick="ask('I need pension')">
+                🏛️ Pension
+            </button>
+
+        </div>
+
+
+        <div class="composer">
+
+            <input
+                id="msg"
+                placeholder="Type what you need..."
+                onkeydown="
+                if(event.key==='Enter')
+                send()
+                "
+            >
+
+            <button onclick="send()">
+                ➤
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="side">
+
+        <h3>
+            Explore Services
+        </h3>
+
+
+        {% for service in services[:4] %}
+
+        <div
+            class="mini"
+            onclick="ask('{{ service.name }}')">
+
+            <span>
+                {% if loop.index == 1 %}
+                    📄
+                {% elif loop.index == 2 %}
+                    🎓
+                {% elif loop.index == 3 %}
+                    💰
+                {% else %}
+                    🏛️
+                {% endif %}
+            </span>
+
+
+            <div>
+
+                <b>
+                    {{ service.name }}
+                </b>
+
+                <small>
+                    {{ service.category }}
+                </small>
+
+            </div>
+
+            →
+
+        </div>
+
+        {% endfor %}
+
+
+        <a
+            class="all"
+            href="/services">
+
+            View all services →
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<script
+    src="{{ url_for('static', filename='app.js') }}">
+</script>
+
+{% endblock %}
